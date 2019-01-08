@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import { Router } from '@reach/router'
 import ViewArticle from './components/ViewArticle/ViewArticle';
 import Auth from './components/Auth';
+import NewArticle from './components/NewArticle/NewArticle';
 
 
 
@@ -22,16 +23,21 @@ class App extends Component {
       <Router>
       <Articles path='/'/>
       <Articles path='/topics/:topic'/>
-      <ViewArticle path='/articles/:articleId'/>
+      <ViewArticle user={this.state.user} path='/articles/:articleId'/>
+      <NewArticle user={this.state.user} path='/articles/post'/>
       </Router>
       <Footer />
       </Auth>
       </div>
     );
   }
+  componentDidMount(){
+    if (localStorage.getItem('user') && !this.state.user.username){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
+  }
   login = ({user}) => {
     console.log('logging in', user)
     this.setState({user})
+    localStorage.setItem('user', JSON.stringify(user))
   }
 }
 export default App;
