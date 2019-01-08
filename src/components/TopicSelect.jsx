@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from '@reach/router'
+import '../App.css';
+import '../Grid.css';
+import './TopicSelect.css';
 
-const TopicSelect = () => {
+
+const TopicSelect = (props) => {
     return (
-        <div className='TopicSelect'>
-            
-        </div>
+        <ul className='TopicSelect'>
+        {(props.topics) && props.topics.map((topic)=>{return (<Link key={`link${topic.slug}`} to={`/topics/${topic.slug}`}><li key={topic.slug}>{topic.slug}</li></Link>)})}
+        </ul>
     );
 };
 

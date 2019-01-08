@@ -1,31 +1,54 @@
 .home {
-    display: grid;
-    grid-template: 1fr 8fr 1fr / 1fr 4fr;
-    grid-template-areas: "head head"
-    "side main"
-    "foot foot";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100vh;
     width: 100vh;
     text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
 }
 
 
 .Header {
-    grid-area: head;
     background-color: red;
+    height: 10vh;
+    width: 100vw
 }
 
 .Footer {
-    grid-area: foot;
     background-color: green;
+    height: 10vh;
+    width: 100vw
 }
 
 .Articles {
-    grid-area: main;
     background-color: blue;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+
 }
 
 .TopicSelect {
-    grid-area: side;
     background-color: pink;
+    height: 100%;
+    width: 20%;
+}
+.TopicScroll {
+    background-color: blue;
+    height: 100%;
+    width: 20%;
+}
+
+.List {
+    background-color: orange;
+    height: 100%;
+    width: 80%;
 }
