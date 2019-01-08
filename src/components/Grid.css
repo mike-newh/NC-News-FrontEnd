@@ -52,3 +52,9 @@ body {
     height: 100%;
     width: 80%;
 }
+
+.ViewArticle {
+    background-color: hotpink;
+    height: 80vh;
+    width: 100vw;
+}
