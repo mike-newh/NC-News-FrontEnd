@@ -1,0 +1,8 @@
+#PostingComment {
+    position: fixed;
+    height: 20vh;
+    width: 80vw;
+    background-color: brown;
+    bottom: 50px;
+    left: 10vw;
+}

@@ -1,0 +1,18 @@
+#Comments {
+    overflow: auto;
+    background-color: yellow;
+    height: 92%;
+
+}
+
+#commentContainer {
+    background-color: grey;
+    width: 30%;
+    height: 100%;
+}
+
+#addComment {
+    height: 6%;
+    width: 70%;
+    margin: 2% auto 2% auto;
+}

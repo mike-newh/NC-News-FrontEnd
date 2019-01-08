@@ -57,4 +57,7 @@ body {
     background-color: hotpink;
     height: 80vh;
     width: 100vw;
+    display: flex;
+    flex-direction: row;
+    
 }
