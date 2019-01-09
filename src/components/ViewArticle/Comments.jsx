@@ -16,7 +16,8 @@ class Comments extends Component {
             <div id='commentContainer'>
                 <ul id='Comments'>
                     {this.state.comments.map((comment) => {
-                        return (<Fragment key={comment.comment_id + 'frag'}>{comment.comment_id === this.state.toBeDeleted ? <button onClick={()=>{this.confirmDel(comment.comment_id)}}>Confirm</button> : <li className='commentEntry' key={comment.comment_id}>{comment.body}</li>}<Votes key={`votes${comment.comment_id}`} articleId={this.props.articleId} commentId={comment.comment_id} votes={comment.votes} />{user.username === comment.author && <button onClick={()=>{this.handleClick(comment.comment_id)}}>Bin</button>}</Fragment>)
+                        return (<Fragment key={comment.comment_id + 'frag'}> <li className='commentEntry' key={comment.comment_id}>{comment.body}</li><Votes key={`votes${comment.comment_id}`} articleId={this.props.articleId} commentId={comment.comment_id} votes={comment.votes}/>
+                        {user.username === comment.author ? comment.comment_id === this.state.toBeDeleted ? <button onClick={()=>{this.confirmDel(comment.comment_id)}}>Confirm</button> : <button onClick={()=>{this.handleClick(comment.comment_id)}}>Bin</button>: <></>}</Fragment>)
                     })}
                 </ul>
                 <button onClick={this.props.openAddComment} id='addComment'>Add Comment</button>

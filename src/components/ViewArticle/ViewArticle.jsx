@@ -14,7 +14,7 @@ class ViewArticle extends Component {
     render() {
         return (
             <div className='ViewArticle'>
-            <ArticleText article={this.state.article}/>
+            <ArticleText user={this.props.user} article={this.state.article}/>
             {this.state.article && <Comments user={this.props.user} openAddComment={this.openAddComment} articleId={this.state.articleId}/>}
             {this.state.postingComment && <PostingComment handleCommentPosted={this.handleCommentPosted} article={this.state.article} user={this.props.user}  closeNewComment={this.closeNewComment}/>}
             </div>
