@@ -1,0 +1,14 @@
+.ArticleItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px black dashed;
+    align-items: center;
+
+    
+}
+
+.ArticleTitle {
+    width: 50vw;
+    margin-top: 0px;
+}
