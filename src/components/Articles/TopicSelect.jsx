@@ -6,9 +6,11 @@ import './TopicSelect.css';
 
 const TopicSelect = (props) => {
     return (
-        <ul className='TopicSelect'>
+        <div className='TopicSelect'>
+        <ul>
         {(props.topics) && props.topics.map((topic)=>{return (<Link key={`link${topic.slug}`} to={`/topics/${topic.slug}`}><li key={topic.slug}>{topic.slug}</li></Link>)})}
         </ul>
+        <button onClick={props.handleAddButton}>Add a category</button></div>
     );
 };
 

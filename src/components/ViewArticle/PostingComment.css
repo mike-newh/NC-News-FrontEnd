@@ -49,3 +49,7 @@
 form button {
 
 }
+
+.error {
+    background-color: red;
+}

@@ -4,6 +4,7 @@ import '../Grid.css';
 import List from './List';
 import TopicScroll from './TopicScroll';
 import Axios from 'axios'
+import NewTopic from './NewTopic';
 
 
 // Maybe replace conditional rendering with router once enpoints established
@@ -11,14 +12,16 @@ class Articles extends Component {
     state = {
         currentTopic: '',
         availableTopics: [],
-        articles: []
+        articles: [],
+        postingTopic: false
     }
     render() {
         return (
             <div className='Articles'>
-            {!this.state.currentTopic && <TopicSelect topics={this.state.availableTopics}/>} 
+            {!this.state.currentTopic && <TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/>} 
             {this.state.currentTopic && <TopicScroll topics={this.state.availableTopics}/>}
             <List articles={this.state.articles}/>
+            {this.state.postingTopic && <NewTopic handleClose={this.handleClose}/>}
             </div>
         );
     }
@@ -37,6 +40,9 @@ class Articles extends Component {
         if (prevState.currentTopic !== this.state.currentTopic){
             this.getArticles()
         }
+    }
+    handleClose = () => {
+        this.setState({postingTopic: false})
     }
 
     getTopics = () => {
@@ -59,8 +65,10 @@ class Articles extends Component {
             console.log('GET REQUEST SENT all articles')
             Axios.get(`https://southcoders-news.herokuapp.com/api/articles`).then(({data})=>{this.setState({articles: data.articles})})
         }
-
-
+    }
+    handleAddButton = (e) => {
+        e.preventDefault()
+        this.setState({postingTopic: true})
     }
 }
 
