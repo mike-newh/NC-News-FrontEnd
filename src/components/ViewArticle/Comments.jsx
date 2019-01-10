@@ -10,8 +10,7 @@ class Comments extends Component {
     }
     render() {
         const { user } = this.props
-        console.log(user)
-        console.log(this.state.comments[0])
+    
         return (
             <div id='commentContainer'>
                 <ul id='Comments'>
@@ -29,7 +28,6 @@ class Comments extends Component {
         this.getComments()
     }
     componentDidUpdate() {
-        console.log(this.state)
     }
 
     getComments = () => {

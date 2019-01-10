@@ -1,0 +1,23 @@
+#Queries {
+    height: 5%;
+    background-color: purple;
+    border: 10px dashed pink;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#queryForm {
+    border: 1px dashed blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+
+}
+
+button {
+    min-height: 20px;
+}

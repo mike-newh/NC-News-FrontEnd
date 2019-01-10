@@ -8,6 +8,7 @@ import { Router } from '@reach/router'
 import ViewArticle from './components/ViewArticle/ViewArticle';
 import Auth from './components/Auth';
 import NewArticle from './components/NewArticle/NewArticle';
+import Users from './components/Users';
 
 
 
@@ -20,11 +21,12 @@ class App extends Component {
       <div className='home'>
       <Auth login={this.login} user={this.state.user}>
       <Header user={this.state.user} />
-      <Router>
+      <Router className='Router'>
       <Articles path='/'/>
       <Articles path='/topics/:topic'/>
       <ViewArticle user={this.state.user} path='/articles/:articleId'/>
       <NewArticle user={this.state.user} path='/articles/post'/>
+      <Users path='/users'/>
       </Router>
       <Footer />
       </Auth>
