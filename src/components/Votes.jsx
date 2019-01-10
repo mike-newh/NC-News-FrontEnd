@@ -27,6 +27,9 @@ class Votes extends Component {
         Axios.patch(commentId ? `https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${commentId}`:`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}`, voteObj).catch((err)=>{this.setState({voteCast: this.state.voteCast-int})})}
 
     }
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.votes != this.props.votes){this.setState({voteCast: 0})}
+    }
 }
 
 export default Votes;
