@@ -10,7 +10,8 @@ class Votes extends Component {
         const {voteCast} = this.state
         return (
             <div className='VotesObj'>
-                <span className='voteCount'>{this.props.votes + voteCast}</span>
+                <p className='voteCount'>{`${this.props.votes + voteCast}`}<span>Points</span></p>
+
                 <div className='btnWrap'>
                 <i onClick={()=>{this.handleVote(1)}} className={`far fa-caret-square-up ${voteCast === 1 ? ' vtUp' : ''}`} ></i>
                 <i onClick={()=>{this.handleVote(-1)}} className={`far fa-caret-square-down ${voteCast === -1 ? ' vtDown' : ''}`}></i>
@@ -23,12 +24,11 @@ class Votes extends Component {
         const voteObj = {inc_votes: int}
         if ((this.state.voteCast === 1 && int === 1) || (this.state.voteCast === -1 && int === -1)){}
         else {this.setState({voteCast: this.state.voteCast+int})
-        console.log('sending PATCH')
         Axios.patch(commentId ? `https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${commentId}`:`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}`, voteObj).catch((err)=>{this.setState({voteCast: this.state.voteCast-int})})}
 
     }
     componentDidUpdate(prevProps, prevState){
-        if (prevProps.votes != this.props.votes){this.setState({voteCast: 0})}
+        if (prevProps.votes !== this.props.votes){this.setState({voteCast: 0})}
     }
 }
 

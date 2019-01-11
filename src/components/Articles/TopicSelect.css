@@ -1,18 +1,53 @@
-ul {
+#TopicSelect {
+    background-color: white;
+    height: auto;
+    width: 19vw;
+    display: table;
+    padding-bottom: 20px;
+    text-decoration: none;
+
+}
+
+#TopicSelect h2 {
+    font-family: var(--font)
+}
+
+#TopicSelect .link {
+    font-family: var(--font);
+    color: white;
+    background-color: var(--prim);
+    min-width: 100px;
+    text-decoration: none;
     margin: 0px;
+    margin-bottom: 10px;
     list-style-type: none;
+    border: 2px solid;
+    min-height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    transition-duration: 0.3s
+
+}
+#TopicSelect .link:hover {
+    color: var(--prim);
+    background-color: white;
+    transition-duration: 0.3s
+}
+
+#TopicSelect .link:active {
+    background-color: var(--lightprim);
+    border-color: var(--lightprim);
+    transition-duration: 0;
+}
+
+#TopicSelect ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0px;
 }
 
-li {
+
+#TopicSelect button {
     margin-top: 10px;
-}
-
-button {
-    position: relative;
-    bottom: -30px;
-}
-
-.TopicSelect {
-    border: 5px solid black
 }

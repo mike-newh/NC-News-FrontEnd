@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NewTopic.css'
 import Axios from 'axios';
+import Loading from '../../Loading';
 
 class NewTopic extends Component {
     state = {
@@ -15,7 +16,7 @@ class NewTopic extends Component {
         return (
             <div id='NewTopic'>
             <button id='close' onClick={this.props.handleClose}>x</button>
-            {this.state.reqSent ? <p>Loading...</p> : this.state.resRecieved && !this.state.error ? <p>Ok!</p> :
+            {this.state.reqSent ? <Loading/> : this.state.resRecieved && !this.state.error ? <p>Ok!</p> :
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='slugInput'>Topic Name</label>
                     <input onChange={this.handleSlug} id='slugInput'/>
@@ -32,7 +33,6 @@ class NewTopic extends Component {
 
     handleSubmit =  (e) => {
         e.preventDefault()
-        console.log(this.state)
         const {slug, description} = this.state
         if (slug.length < 1){this.setState({error: true})}
         else {const newTopic = {slug, description}

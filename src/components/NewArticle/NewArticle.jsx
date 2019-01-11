@@ -49,12 +49,12 @@ class NewArticle extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const articleToPost = {title: this.state.title, body: this.state.body, created_by: this.props.user.user_id}
-        if (Object.values(articleToPost).some((x)=>{return x.length < 1}) || (!this.state.chosenTopic || this.state.chosenTopic === 'Select a Topic')){this.setState({error: true}, ()=>{console.log(this.state)})}
+        if (Object.values(articleToPost).some((x)=>{return x.length < 1}) || (!this.state.chosenTopic || this.state.chosenTopic === 'Select a Topic')){this.setState({error: true})}
         else Axios.post(`https://southcoders-news.herokuapp.com/api/topics/${this.state.chosenTopic}/articles`, articleToPost).then((res)=>{this.setState({error: false, articleSent: res.data.article.article_id})}).catch((err)=>{console.log(err)})
     }
     getTopics = () => {
         Axios.get(`https://southcoders-news.herokuapp.com/api/topics`).then(({data})=>{
-            this.setState({topics: data.topics}, ()=>{console.log(this.state)})
+            this.setState({topics: data.topics})
         })
     }
 }

@@ -1,40 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
 #NewArticle {
     width: 100vw;
-    height: 80vh;
-    background-color: rosybrown;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form {
+#NewArticle form {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 70%;
-    border-style: solid;
+    border: 3px solid var(--prim);
     height: 80%;
+    font-family: 'Slabo 27px';
+}
+#NewArticle h2 {
+    font-size: 30px;
+    font-family: 'Slabo 27px';
 }
 
-form button {
+#NewArticle form button {
     width: 10%;
     text-align: center;
 }
-label {
+#NewArticle label {
     margin-bottom: 10px;
 }
 
-input {
+#NewArticle input {
     margin-bottom: 30px;
 }
-textarea {
+#NewArticle textarea {
     margin-bottom: 30px;
 }
-button {
+#NewArticle button {
     margin-bottom: 10px;
 }
-select {
+#NewArticle select {
     margin-bottom: 30px;
     min-height: 20px;
 }

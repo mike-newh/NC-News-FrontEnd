@@ -1,7 +1,8 @@
 #Comments {
     overflow: auto;
     background-color: yellow;
-    height: 92%;
+    height: 75vh;
+    max-width: 100%;
     overflow: auto;
 
 
@@ -9,22 +10,62 @@
 
 #commentContainer {
     background-color: grey;
-    width: 30%;
+    max-width: 25%;
     height: 100%;
 }
 
 #addComment {
-    height: 6%;
+    min-height: 20px;
+    height: 4%;
     width: 70%;
-    margin: 2% auto 2% auto;
+    position: relative;
+    bottom: 20px;
+    right: 0px;
+
 }
 
-button {
-    position: relative;
-}
 
 .commentEntry {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    width: 75%;
+    background-color: lightblue;
+    margin-bottom: 5px;
+}
+
+select {
+    margin-top: 10px;
+}
+
+.textAndVote {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.btnAndInfo {
+    border-style: solid;
+    border-width: 1px;
+    border-width: 0px 0px 2px 0px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.MasterComment {
+    margin-bottom: 10px;
+}
+
+.btnAndInfo button {
+  margin-left: 50px;
+}
+
+#loadMore {
+    width: 100%
+}
+
+#loadMore button {
+    width: 80%;
 }

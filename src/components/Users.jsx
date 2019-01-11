@@ -9,7 +9,11 @@ class Users extends Component {
     render() {
         return (
             <div id='MemberList'>
-                {this.state.users.map((member)=>{return (<li><span>User: {member.username}</span><span>Id: {member.user_id}</span></li>)})}
+                {this.state.users.map((member)=>{return (<li key={member.user_id}>
+                    <span id='usernametitle' className='userDataTitle'>Username </span>                
+                    <span id='idtitle' className='userDataTitle'>Id </span>
+                    <span id='username' className='userData'> {member.username}</span>
+                    <span id='id' className='userData'> {member.user_id}</span></li>)})}
             </div>
         );
     }

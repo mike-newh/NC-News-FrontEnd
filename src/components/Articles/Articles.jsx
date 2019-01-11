@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TopicSelect from './TopicSelect';
-import '../Grid.css';
 import List from './List';
 import TopicScroll from './TopicScroll';
 import Axios from 'axios'
@@ -19,17 +18,19 @@ class Articles extends Component {
         limit: 10,
         page:1,
         sort_by: 'votes',
-        sort_ascending: false 
+        sort_ascending: false,
+        noArticles: false,
 
     }
     render() {
         return (
-            <div className='Articles'>
+            <div id='Articles'>
             {!this.state.currentTopic && <TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/>} 
             {this.state.currentTopic && <TopicScroll topics={this.state.availableTopics}/>}
-            <div className='QueryWrap'>
+            <div id='QueryAndList'>
             <Queries handlePage={this.handlePage}handleFilter={this.handleFilter} handleLimit={this.handleLimit} handleSortBy={this.handleSortBy} handleSortAsc={this.handleSortAsc}/>
-            <List articles={this.state.articles}/></div>
+            <List noArticles={this.state.noArticles} articles={this.state.articles}/>
+            </div>
             {this.state.postingTopic && <NewTopic handleClose={this.handleClose}/>}
             </div>
         );
@@ -46,13 +47,12 @@ class Articles extends Component {
     handleFilter = (e) => {
         e.preventDefault()
         this.getArticles()
-        console.log(this.state)
     }
     // handle filter will affect vote optimism by refetching vote count but not resetting vote optimism state
     handlePage = (int) => {
         this.setState({page: this.state.page+int}, ()=>{
             if (this.state.page < 1){this.setState({page: 1})}
-            else {this.getArticles().catch((err)=>{this.setState({page: this.state.page-int})}); console.log('firing page')}
+            else {this.getArticles().catch((err)=>{this.setState({page: this.state.page-int})})}
         })
 
             
@@ -81,27 +81,21 @@ class Articles extends Component {
 
     getTopics = () => {
    
-        console.log('GET REQUEST SENT topics')
         Axios.get(`https://southcoders-news.herokuapp.com/api/topics`).then(({data})=>{
             this.setState({availableTopics: data.topics})
         })
     }
     setCurrentTopic = () => {
-        this.setState({currentTopic: this.props.topic}, ()=>{
-            console.log(`topic is now ${this.state.currentTopic}`)
-        })
+        this.setState({currentTopic: this.props.topic})
     }
     getArticles = () => {
         const {page, limit, sort_by, sort_ascending} = this.state
         const queryString = `?limit=${limit}&p=${page}&sort_by=${sort_by}&sort_ascending=${sort_ascending}`
-        console.log(queryString)
         if (this.state.currentTopic){
-            console.log('GET REQUEST SENT Specific aricles')
-        return Axios.get(`https://southcoders-news.herokuapp.com/api/topics/${this.state.currentTopic}/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles})})
+        return Axios.get(`https://southcoders-news.herokuapp.com/api/topics/${this.state.currentTopic}/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false})}).catch(()=>{this.setState({noArticles: true})})
         }
         else {
-            console.log('GET REQUEST SENT all articles')
-            return Axios.get(`https://southcoders-news.herokuapp.com/api/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles})})
+            return Axios.get(`https://southcoders-news.herokuapp.com/api/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false})}).catch(()=>{this.setState({noArticles: true})})
         }
     }
     handleAddButton = (e) => {

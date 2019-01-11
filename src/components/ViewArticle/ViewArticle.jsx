@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Grid.css';
+import './ViewArticle.css';
 import ArticleText from './ArticleText';
 import Comments from './Comments';
 import Axios from 'axios'
@@ -24,18 +24,15 @@ class ViewArticle extends Component {
     setArticleId = () => {
         this.setState({articleId: this.props.articleId})
     }
-
     componentDidMount(){
         this.setArticleId()
     }
-
     componentDidUpdate(prevProps, prevState){
         if (prevState.articleId !== this.state.articleId){
             this.getArticleInfo()
         }
     }
     getArticleInfo = () => {
-        console.log('GET REQUEST SENT Article Info')
         Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.state.articleId}`).then(({data})=>{
             this.setState({article: data.article})
         }).catch(()=>{this.setState({article: null})})

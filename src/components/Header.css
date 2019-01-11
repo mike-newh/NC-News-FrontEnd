@@ -1,9 +1,37 @@
-.Header {
-    background-color: red;
+#Header {
+    background-color: white;
+    min-height: 10vh;
     height: 10vh;
-    width: 100vw;
+    width: 99vw;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
+}
+
+
+#Header .link {
+    font-family: var(--font);
+    text-decoration: none;
+    /* color: var(--prim); */
+    border: 3px solid var(--prim);
+    background-color: var(--prim);
+    color: white;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 150px;
+    height: 70%;
+    position: relative;
+    top: 10%;
+    transition-duration: 0.3s;
+
+}
+#Header .link:hover {
+    background-color: white;
+    color: var(--prim);
+    border-color: var(--prim);
+    transition-duration: 0.3s;
 }

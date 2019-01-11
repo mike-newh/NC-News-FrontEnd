@@ -7,10 +7,10 @@ import { Link } from '@reach/router'
 
 const Header = (props) => {
     return (
-        <div className='Header'>
-            <Link to='/'>Home</Link>
-            <p>Logged in as {props.user.username}</p>
-            <Link to='/articles/post'><span>Add Article</span></Link>
+        <div id='Header'>
+            <Link className='link' to='/'>All Articles</Link>
+            <Link className='link' to='/articles/post'><span>Add Article</span></Link>
+            <Link className='link' to='/users'><p>Users</p></Link>
         </div>
     );
 };

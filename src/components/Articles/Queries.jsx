@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import './Queries.css'
+import React, { Component } from 'react';
+import './Articles.css'
 
 class Queries extends Component {
  
@@ -18,7 +18,6 @@ class Queries extends Component {
                     <label htmlFor='sortBy'>Order by:</label>
                     <select onChange={this.props.handleSortBy} id='sortBy'>
                     <option value='votes'>Votes</option>
-                    <option value='article_id'>Article Id</option>
                     <option value='comment_count'>Comment Count</option>
                     <option value='title'>Title</option>
                     <option value='created_at'>Date</option>

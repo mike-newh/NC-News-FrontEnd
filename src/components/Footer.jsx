@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from '@reach/router'
+import './Footer.css'
 
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <div className='Footer'>
-            <Link to='/users'><p>Users</p></Link>
+        <div id='Footer'>
+            <p>Logged in as {props.user.username}</p>
         </div>
     );
 };
