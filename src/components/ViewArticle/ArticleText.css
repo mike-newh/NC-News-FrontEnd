@@ -1,9 +1,9 @@
 #ArticleText {
-    background-color: skyblue;
     height:100%;
     width: 75%;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    font-family: var(--font);
 }
 
 #articleDelete {
@@ -13,14 +13,15 @@
     max-width: 100px;
 }
 
-h1 {
+#ArticleText h1 {
     margin-bottom: 5px;
+    font-family: 'Slabo 27px';
 }
 
-h2 {
+#ArticleText h2 {
     font-size: 15px;
 }
 
-p {
+#ArticleText p {
     margin: 3vh 10%;
 }

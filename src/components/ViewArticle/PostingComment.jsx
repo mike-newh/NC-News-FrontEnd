@@ -11,8 +11,8 @@ class PostingComment extends Component {
     render() {
         return (
             <div id='PostingComment'>
-                <button onClick={this.props.closeNewComment} id='closeBox'>x</button>
-                {this.state.posted ? <p>Posted!</p>:<form onSubmit={this.handleSubmit} id='commentForm'>
+                <button className='closex' onClick={this.props.closeNewComment} id='closeBox'><i class="fas fa-times"></i></button>
+                {this.state.posted ? <i style={{color: 'green', 'fontSize': '100px', 'lineHeight': '100%'}} className="commentTick fas fa-check"></i>:<form onSubmit={this.handleSubmit} id='commentForm'>
                     {this.state.error ?<label className='error'>Comments cannot be blank</label> : <label htmlFor='commentText'>Write a comment</label>}
                     <div id='commentSubmitWrap'>
                     <textarea onChange={this.handleChange} cols='80' rows='4' type='text' id='commentText'></textarea> <button>Submit</button></div>

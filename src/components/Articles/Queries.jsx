@@ -6,7 +6,7 @@ class Queries extends Component {
     render() {
         return (
             <div id='Queries'>
-             <button onClick={()=>{this.props.handlePage(-1)}}>Previous Page</button>
+             <button className='pgBtn' onClick={()=>{this.props.handlePage(-1)}}><i class="fas fa-chevron-circle-left"></i>Prev Page</button>
                 <form id='queryForm' onSubmit={this.props.handleFilter}>
                     <label htmlFor='limit'>Results per page:</label>
                     <select onChange={this.props.handleLimit} id='limit'>
@@ -26,7 +26,7 @@ class Queries extends Component {
                     <div><input onClick={this.props.handleSortAsc} type='radio' name='sortAsc' value={false} defaultChecked/>Descending<br/></div>
                     <button type='submit'>Filter</button>
                 </form>
-                <button onClick={()=>{this.props.handlePage(1)}}>Next Page</button>
+                <button className='pgBtn' onClick={()=>{this.props.handlePage(1)}}>Next Page<i class="fas fa-chevron-circle-right"></i></button>
             </div>
         );
     }

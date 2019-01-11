@@ -1,17 +1,38 @@
 #NewTopic {
     position: fixed;
     height: 40vh;
-    width: 80vw;
-    background-color: rgb(90, 167, 128);
+    width: 50vw;
+    background-color: white;
+    box-shadow: 0px 0px 10px 3px;
+    border-radius: 3px;
+    border: 2px solid var(--prim);
     top: 100px;
-    left: 10vw;
+    left: 25vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: var(--font)
 }
 
 #description {
     min-height: 30px;
+}
+
+#NewTopic form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+#NewTopic label {
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+
+#NewTopic textarea {
+    margin-bottom: 20px;
 }
 
 #close {

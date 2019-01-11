@@ -27,3 +27,20 @@ body {
   padding: 0px;
   margin: 0px;
 }
+
+.closex {
+  color: red;
+  border: 2px solid red;
+  border-radius: 2px;
+  background-color: white;
+  line-height: 20px;
+  font-family: var(--font);
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.closex:hover {
+  background-color: red;
+}

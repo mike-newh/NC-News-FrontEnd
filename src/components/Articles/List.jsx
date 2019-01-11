@@ -9,7 +9,7 @@ const List = (props) => {
     return (
         <div className='List'>
             { props.articles.length === 0 && !props.noArticles && (<Loading/>)}
-            { props.noArticles && <><p>No articles exist... make a new article?</p><Link to='/articles/post'><button>Make Article</button></Link>
+            { props.noArticles && <><p>No articles exist... make a new article?</p><Link to='/articles/post'><button id='noArticlesBtn'>Make Article</button></Link>
             </>}
             {   
                 props.articles.length > 0 && props.articles.map((article)=>{return (

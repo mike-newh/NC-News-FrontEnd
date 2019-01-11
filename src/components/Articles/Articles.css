@@ -21,6 +21,8 @@
     width: 80%;
 }
 
+
+
 #Queries {
     height: 6vh;
     min-height: 6vh;
@@ -34,6 +36,26 @@
     padding: 0px;
     margin: 0px;
     margin-bottom: 10px;
+
+}
+
+#Queries i {
+    margin: 0px 10px;
+}
+
+.pgBtn {
+    line-height: 100%;
+    height: 35px;
+    background-color: white;
+    color: var(--prim);
+    border: 2px solid var(--prim);
+    border-radius: 2px;
+    font-family: var(--font);
+}
+
+.pgBtn:hover {
+    background-color: var(--prim);
+    color: white;
 }
 
 
@@ -62,6 +84,9 @@
 #queryForm select {
     margin: 0px;
     margin-right: 10px;
+    background-color: white;
+    border: 1px solid var(--prim);
+    border-radius: 3px;
 
 }
 #queryForm input {
@@ -70,7 +95,26 @@
     padding: 0px;
 }
 
+#queryForm button {
+    background-color: white;
+    border: 2px solid var(--prim);
+    border-radius: 2px;
+    font-family: var(--font);
+    color: var(--prim);
+}
+
+#queryForm button:hover {
+    background-color: var(--prim);
+    border: 2px solid var(--prim);
+    border-radius: 2px;
+    font-family: var(--font);
+    color: white;
+}
+
+
+
 #Queries button {
     min-height: 20px;
     margin-left: 10px;
+
 }

@@ -25,8 +25,9 @@ class Articles extends Component {
     render() {
         return (
             <div id='Articles'>
-            {!this.state.currentTopic && <TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/>} 
-            {this.state.currentTopic && <TopicScroll topics={this.state.availableTopics}/>}
+            {/* {!this.state.currentTopic && <TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/>} 
+            {this.state.currentTopic && <TopicScroll topics={this.state.availableTopics}/>} */}
+             {<TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/> /*this line to remove*/}
             <div id='QueryAndList'>
             <Queries handlePage={this.handlePage}handleFilter={this.handleFilter} handleLimit={this.handleLimit} handleSortBy={this.handleSortBy} handleSortAsc={this.handleSortAsc}/>
             <List noArticles={this.state.noArticles} articles={this.state.articles}/>
