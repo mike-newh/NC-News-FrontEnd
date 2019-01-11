@@ -10,12 +10,13 @@ class ViewArticle extends Component {
         articleId : undefined,
         article: undefined,
         postingComment: false,
+        postedComments: []
     }
     render() {
         return (
             <div className='ViewArticle'>
             <ArticleText user={this.props.user} article={this.state.article}/>
-            {this.state.article && <Comments user={this.props.user} openAddComment={this.openAddComment} articleId={this.state.articleId} commentCount={this.state.article.comment_count}/>}
+            {this.state.article && <Comments postedComments={this.state.postedComments} user={this.props.user} openAddComment={this.openAddComment} articleId={this.state.articleId} commentCount={this.state.article.comment_count}/>}
             {this.state.postingComment && <PostingComment handleCommentPosted={this.handleCommentPosted} article={this.state.article} user={this.props.user}  closeNewComment={this.closeNewComment}/>}
             </div>
         );
@@ -44,6 +45,7 @@ class ViewArticle extends Component {
         this.setState({postingComment: true})
     }
     handleCommentPosted = () => {
+        console.log('closing')
         setTimeout(()=>{
             this.setState({postingComment: false})
         }, 3000)

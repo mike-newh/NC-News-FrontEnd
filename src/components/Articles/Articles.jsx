@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TopicSelect from './TopicSelect';
 import List from './List';
-import TopicScroll from './TopicScroll';
 import Axios from 'axios'
 import NewTopic from './NewTopic';
 import Queries from './Queries';
@@ -20,6 +19,8 @@ class Articles extends Component {
         sort_by: 'votes',
         sort_ascending: false,
         noArticles: false,
+        pageEnd: true,
+        articleCount: 0,
 
     }
     render() {
@@ -29,7 +30,7 @@ class Articles extends Component {
             {this.state.currentTopic && <TopicScroll topics={this.state.availableTopics}/>} */}
              {<TopicSelect handleAddButton={this.handleAddButton} topics={this.state.availableTopics}/> /*this line to remove*/}
             <div id='QueryAndList'>
-            <Queries handlePage={this.handlePage}handleFilter={this.handleFilter} handleLimit={this.handleLimit} handleSortBy={this.handleSortBy} handleSortAsc={this.handleSortAsc}/>
+            <Queries pageEnd={this.state.pageEnd} pageNum={this.state.page} handlePage={this.handlePage}handleFilter={this.handleFilter} handleLimit={this.handleLimit} handleSortBy={this.handleSortBy} handleSortAsc={this.handleSortAsc}/>
             <List noArticles={this.state.noArticles} articles={this.state.articles}/>
             </div>
             {this.state.postingTopic && <NewTopic handleClose={this.handleClose}/>}
@@ -75,7 +76,15 @@ class Articles extends Component {
         if (prevState.currentTopic !== this.state.currentTopic){
             this.getArticles()
         }
+        if (prevState.articles !== this.state.articles){
+            this.checkPageEnd()
+        }
     }
+    checkPageEnd = () => {
+        const {page, limit, articleCount} = this.state
+        this.setState({pageEnd: ((page*limit) < articleCount)})
+    }
+
     handleClose = () => {
         this.setState({postingTopic: false})
     }
@@ -93,10 +102,10 @@ class Articles extends Component {
         const {page, limit, sort_by, sort_ascending} = this.state
         const queryString = `?limit=${limit}&p=${page}&sort_by=${sort_by}&sort_ascending=${sort_ascending}`
         if (this.state.currentTopic){
-        return Axios.get(`https://southcoders-news.herokuapp.com/api/topics/${this.state.currentTopic}/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false})}).catch(()=>{this.setState({noArticles: true})})
+        return Axios.get(`https://southcoders-news.herokuapp.com/api/topics/${this.state.currentTopic}/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false, articleCount: data.count})}).catch(()=>{this.setState({noArticles: true, articleCount:0})})
         }
         else {
-            return Axios.get(`https://southcoders-news.herokuapp.com/api/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false})}).catch(()=>{this.setState({noArticles: true})})
+            return Axios.get(`https://southcoders-news.herokuapp.com/api/articles${queryString}`).then(({data})=>{this.setState({articles: data.articles, noArticles: false, articleCount: data.count})}).catch(()=>{this.setState({noArticles: true, articleCount:0})})
         }
     }
     handleAddButton = (e) => {

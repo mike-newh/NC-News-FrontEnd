@@ -19,6 +19,9 @@
 .btnWrap i {
     font-size: 20px;
 }
+.btnWrap i:hover {
+    background-color: lightsteelblue;
+}
 
 .voteCount {
     width: 50px;

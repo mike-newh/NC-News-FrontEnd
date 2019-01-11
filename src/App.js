@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div id='Home'>
       <Auth login={this.login} user={this.state.user}>
-      <Header  />
+      <Header handleLogOut={this.handleLogOut} />
       <Router className='Router'>
       <Articles path='/'/>
       <Articles path='/topics/:topic'/>
@@ -31,8 +31,16 @@ class App extends Component {
     );
   }
   componentDidMount(){
-    if (localStorage.getItem('user') && !this.state.user.username){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
+    if (localStorage.getItem('user') && !this.state.user && !this.state.user.username){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
   }
+  handleLogOut = () => {
+    console.log('logging out');
+    this.setState({user: {}}, ()=>{
+      localStorage.removeItem('user');
+    })
+
+  }
+
   login = ({user}) => {
     console.log('logging in', user)
     this.setState({user})

@@ -3,6 +3,9 @@
 #AuthForm {
     background-color: lightgray;
     border: 1px solid darkgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px;
     height: 50%;
@@ -14,7 +17,7 @@
     width: 99vw;
     border: 1px solid black;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -27,6 +30,10 @@
     font-size: 20px;
     margin-top: 10%;
     font-family: 'Bree Serif'
+}
+
+#AuthForm input {
+    margin: 20px;
 }
 
 #Home {

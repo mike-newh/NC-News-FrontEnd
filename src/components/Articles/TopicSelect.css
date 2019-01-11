@@ -51,3 +51,20 @@
 #TopicSelect button {
     margin-top: 10px;
 }
+
+#addTopicBtn {
+    color: var(--prim);
+    border: 2px solid var(--prim);
+    border-radius: 3px;
+    background-color: white;
+    font-family: var(--font);
+    height: 50px;
+    transition-duration: 0.3s
+}
+
+#addTopicBtn:hover {
+    color: white;
+    background-color: var(--prim);
+    transition-duration: 0.3s
+
+}

@@ -29,8 +29,8 @@ body {
 }
 
 .closex {
-  color: red;
-  border: 2px solid red;
+  color: var(--prim);
+  border: 2px solid var(--prim);
   border-radius: 2px;
   background-color: white;
   line-height: 20px;
@@ -42,5 +42,5 @@ body {
 }
 
 .closex:hover {
-  background-color: red;
+  background-color: var(--prim);
 }

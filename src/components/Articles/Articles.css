@@ -21,11 +21,13 @@
     width: 80%;
 }
 
+#prevPlacehold {
+    width: 130px;
+}
 
 
 #Queries {
-    height: 6vh;
-    min-height: 6vh;
+    min-height: 8vh;
     background-color: white;
     border: 2px solid var(--prim);
     border-radius: 2px;
@@ -51,6 +53,7 @@
     border: 2px solid var(--prim);
     border-radius: 2px;
     font-family: var(--font);
+    width: 120px;
 }
 
 .pgBtn:hover {

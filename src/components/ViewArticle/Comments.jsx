@@ -6,7 +6,7 @@ import CommentQuery from './CommentQuery';
 
 class Comments extends Component {
     state = {
-        comments: [],
+        comments: [...this.props.postedComments],
         toBeDeleted: NaN,
         queryString: '?sort_by=votes&sort_ascending=false',
         page: 1,
@@ -46,8 +46,9 @@ class Comments extends Component {
     }
 
 
+
     getComments = () => {
-        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: data.comments }) })
+        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: this.state.comments.concat(data.comments) }) })
     }
     getMoreComments = () => {
         this.setState({page: this.state.page+1}, ()=>{
