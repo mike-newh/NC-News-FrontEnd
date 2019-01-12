@@ -10,7 +10,6 @@
 }
 
 #MemberList li{
-    border: 1px solid grey;
     background-color: white;
     border-radius: 3px;
     display: grid;
@@ -18,10 +17,25 @@
     padding: 0px;
     grid-template-areas: 'usertitle user' 'idtitle id';
     width: 30%;
-    margin-top: 20px;
-    padding: 5px;
+
 
 }
+
+.linkUser {
+    border: 1px solid grey;
+    padding: 0px;
+    margin-top: 20px;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    border-radius: 2px;
+}
+
+.linkUser:hover {
+    box-shadow: 0px 0px 5px 1px grey;
+}
+
+
 
 #usernametitle {
     grid-area: usertitle;
@@ -41,6 +55,7 @@
     border-right: 2px solid var(--prim);
     text-align: right;
     padding-right: 10px;
+    color: dimgrey;
 }
 
 

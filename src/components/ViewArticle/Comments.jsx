@@ -6,7 +6,7 @@ import CommentQuery from './CommentQuery';
 
 class Comments extends Component {
     state = {
-        comments: [...this.props.postedComments],
+        comments: [],
         toBeDeleted: NaN,
         queryString: '?sort_by=votes&sort_ascending=false',
         page: 1,
@@ -45,10 +45,19 @@ class Comments extends Component {
         this.getComments()
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.postingComment !== this.props.postingComment)
+            {
+            this.getComments()    
+//could make a fake optimistic comment instead
+// could iterate a posting count forward every time an article is posted
+        }
+    }
+
 
 
     getComments = () => {
-        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: this.state.comments.concat(data.comments) }) })
+        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: data.comments, page: 1})})
     }
     getMoreComments = () => {
         this.setState({page: this.state.page+1}, ()=>{

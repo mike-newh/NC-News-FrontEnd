@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import './Users.css'
+import {Link} from '@reach/router'
 
 class Users extends Component {
     state = {
@@ -9,11 +10,11 @@ class Users extends Component {
     render() {
         return (
             <div id='MemberList'>
-                {this.state.users.map((member)=>{return (<li key={member.user_id}>
+                {this.state.users.map((member)=>{return (<Link className='linkUser' to={`/users/${member.username}`}><li key={member.user_id}>
                     <span id='usernametitle' className='userDataTitle'>Username </span>                
                     <span id='idtitle' className='userDataTitle'>Id </span>
                     <span id='username' className='userData'> {member.username}</span>
-                    <span id='id' className='userData'> {member.user_id}</span></li>)})}
+                    <span id='id' className='userData'> {member.user_id}</span></li></Link>)})}
             </div>
         );
     }

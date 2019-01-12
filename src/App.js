@@ -7,6 +7,7 @@ import ViewArticle from './components/ViewArticle/ViewArticle';
 import Auth from './components/Auth';
 import NewArticle from './components/NewArticle/NewArticle';
 import Users from './components/Users';
+import SingleUser from './components/SingleUser';
 
 
 
@@ -18,20 +19,22 @@ class App extends Component {
     return (
       <div id='Home'>
       <Auth login={this.login} user={this.state.user}>
-      <Header handleLogOut={this.handleLogOut} />
+      <Header user={this.state.user} handleLogOut={this.handleLogOut} />
       <Router className='Router'>
       <Articles path='/'/>
       <Articles path='/topics/:topic'/>
       <ViewArticle user={this.state.user} path='/articles/:articleId'/>
       <NewArticle user={this.state.user} path='/articles/post'/>
       <Users path='/users'/>
+      <SingleUser path='/users/:username' />
       </Router>
       </Auth>
       </div>
     );
   }
+  // && !this.state.user && !this.state.user.username
   componentDidMount(){
-    if (localStorage.getItem('user') && !this.state.user && !this.state.user.username){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
+    if (localStorage.getItem('user')){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
   }
   handleLogOut = () => {
     console.log('logging out');
