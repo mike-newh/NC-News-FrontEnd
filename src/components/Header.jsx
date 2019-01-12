@@ -13,7 +13,6 @@ const Header = (props) => {
             <Link className='link' to='/articles/post'><span>Add Article</span></Link>
             <Link className='link' to='/users'><p>Users</p></Link>
             <div id='userBox'>
-            {console.log(user)}
             <div id='userDetail'>
             <p>Logged in as:</p><p>{user.username}</p></div><img alt='user Avatar' id='avatar' src={user.avatar_url}></img>
             </div>

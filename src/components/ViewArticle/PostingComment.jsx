@@ -31,7 +31,7 @@ class PostingComment extends Component {
         else {
             const comment = {body: this.state.body, user_id: this.props.user.user_id}
             Axios.post(`https://southcoders-news.herokuapp.com/api/articles/${this.props.article.article_id}/comments`, comment)
-            .then((res)=>{this.setState({error: false, posted: true},()=>{this.props.handleCommentPosted()})})
+            .then((res)=>{this.setState({error: false, posted: true},()=>{this.props.handleCommentPosted(comment)})})
             .catch(
                 ()=>{this.setState({error: true, posted: false})}
                 )

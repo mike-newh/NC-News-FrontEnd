@@ -4,19 +4,20 @@ import ArticleText from './ArticleText';
 import Comments from './Comments';
 import Axios from 'axios'
 import PostingComment from './PostingComment';
+import moment from 'moment'
 
 class ViewArticle extends Component {
     state = {
         articleId : undefined,
         article: undefined,
         postingComment: false,
-        postedComments: []
+        psuedos: []
     }
     render() {
         return (
             <div className='ViewArticle'>
             <ArticleText user={this.props.user} article={this.state.article}/>
-            {this.state.article && <Comments postingComment={this.state.postingComment} user={this.props.user} openAddComment={this.openAddComment} articleId={this.state.articleId} commentCount={this.state.article.comment_count}/>}
+            {this.state.article && <Comments psuedos={this.state.psuedos.length > 0 ? this.state.psuedos : []} postingComment={this.state.postingComment} user={this.props.user} openAddComment={this.openAddComment} articleId={this.state.articleId} commentCount={this.state.article.comment_count}/>}
             {this.state.postingComment && <PostingComment handleCommentPosted={this.handleCommentPosted} article={this.state.article} user={this.props.user}  closeNewComment={this.closeNewComment}/>}
             </div>
         );
@@ -44,12 +45,19 @@ class ViewArticle extends Component {
     openAddComment = () => {
         this.setState({postingComment: true})
     }
-    handleCommentPosted = () => {
-        console.log('closing')
+    createPsuedoComment = (partial) => {
+        const {body, user_id} = partial
+        const psuedo = {body, user_id, comment_id: 'psuedo', votes: 0, created_at: moment().format(), author: this.props.user.username}
+        this.setState({psuedos: [...this.state.psuedos, psuedo]})
+    }
+
+    handleCommentPosted = (comment) => {
+        this.createPsuedoComment(comment)
         setTimeout(()=>{
             this.setState({postingComment: false})
         }, 3000)
     }
+
 }
 
 export default ViewArticle;
