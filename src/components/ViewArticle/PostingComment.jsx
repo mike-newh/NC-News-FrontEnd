@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './PostingComment.css'
 import Axios from 'axios';
-import { navigate } from "@reach/router"
 
 
 class PostingComment extends Component {

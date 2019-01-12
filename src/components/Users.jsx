@@ -10,7 +10,7 @@ class Users extends Component {
     render() {
         return (
             <div id='MemberList'>
-                {this.state.users.map((member)=>{return (<Link className='linkUser' to={`/users/${member.username}`}><li key={member.user_id}>
+                {this.state.users.map((member)=>{return (<Link key={`link${member.user_id}`} className='linkUser' to={`/users/${member.username}`}><li key={member.user_id}>
                     <span id='usernametitle' className='userDataTitle'>Username </span>                
                     <span id='idtitle' className='userDataTitle'>Id </span>
                     <span id='username' className='userData'> {member.username}</span>
