@@ -3,6 +3,7 @@ import './ArticleText.css'
 import Axios from 'axios';
 import { Link } from '@reach/router'
 import Loading from '../../Loading';
+import FourOhFour from '../../FourOhFour';
 
 
 class ArticleText extends Component {
@@ -18,7 +19,7 @@ class ArticleText extends Component {
         <div id='ArticleText'>
         
             {article === undefined && <Loading/>}
-            {article === null && '404'}
+            {article === null && <FourOhFour/>}
             {article && <>
             <h1>{article.title}</h1>
             <h2>By {article.author} on {article.created_at.slice(0,10)}</h2>

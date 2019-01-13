@@ -15,7 +15,7 @@ class NewTopic extends Component {
     render() {
         return (
             <div id='NewTopic'>
-            <button className='closex' id='close' onClick={this.props.handleClose}><i class="fas fa-times"></i></button>
+            <button className='closex' id='close' onClick={this.props.handleClose}><i className="fas fa-times"></i></button>
             {this.state.reqSent ? <Loading/> : this.state.resRecieved && !this.state.error ? <i style={{marginTop: '8vh',color: 'green', 'fontSize': '100px', 'lineHeight': '100%'}} className="commentTick fas fa-check"></i> :
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='slugInput'>Topic Name</label>

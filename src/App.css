@@ -44,3 +44,13 @@ body {
 .closex:hover {
   background-color: var(--prim);
 }
+
+#FourOh {
+  margin-top: 10vh;
+  font-family: var(--font);
+
+}
+
+#FourOh i {
+  font-size: 50px;
+}

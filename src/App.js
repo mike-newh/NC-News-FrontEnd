@@ -8,6 +8,7 @@ import Auth from './components/Auth';
 import NewArticle from './components/NewArticle/NewArticle';
 import Users from './components/Users';
 import SingleUser from './components/SingleUser';
+import FourOhFour from './FourOhFour';
 
 
 
@@ -27,6 +28,7 @@ class App extends Component {
       <NewArticle user={this.state.user} path='/articles/post'/>
       <Users path='/users'/>
       <SingleUser path='/users/:username' />
+      <FourOhFour default to='/404'/>
       </Router>
       </Auth>
       </div>

@@ -6,7 +6,7 @@ class Queries extends Component {
     render() {
         return (
             <div id='Queries'>
-             {this.props.pageNum > 1 ? <button className='pgBtn' onClick={()=>{this.props.handlePage(-1)}} disabled={this.props.pageNum === 1}><i class="fas fa-chevron-circle-left"></i>Prev Page</button> : <div id='prevPlacehold'></div>}
+             {this.props.pageNum > 1 ? <button className='pgBtn' onClick={()=>{this.props.handlePage(-1)}} disabled={this.props.pageNum === 1}><i className="fas fa-chevron-circle-left"></i>Prev Page</button> : <div id='prevPlacehold'></div>}
                 <form id='queryForm' onSubmit={this.props.handleFilter}>
                     <label htmlFor='limit'>Results per page:</label>
                     <select onChange={this.props.handleLimit} id='limit'>
