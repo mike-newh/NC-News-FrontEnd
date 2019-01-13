@@ -10,7 +10,7 @@ import FourOhFour from '../../FourOhFour';
 class Articles extends Component {
     state = {
         currentTopic: '',
-        availableTopics: [],
+        availableTopics: this.props.topics,
         articles: [],
         postingTopic: false,
         limit: 10,
@@ -35,8 +35,8 @@ class Articles extends Component {
             </div>
         );
     }
-    checkValidTopic = () => {
 
+    checkValidTopic = () => {
         const check = (this.state.availableTopics.some((topic) => { return topic.slug === this.state.currentTopic }) || !this.state.currentTopic)
         return check
     }
@@ -54,7 +54,6 @@ class Articles extends Component {
         e.preventDefault()
         this.getArticles()
     }
-    // handle filter will affect vote optimism by refetching vote count but not resetting vote optimism state
     handlePage = (int) => {
         this.setState({ page: this.state.page + int }, () => {
             if (this.state.page < 1) { this.setState({ page: 1 }) }
@@ -66,7 +65,6 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        this.getTopics()
         if (this.props.topic) { this.setState({ currentTopic: this.props.topic }) }
         else this.getArticles()
     }
@@ -83,6 +81,7 @@ class Articles extends Component {
         if (prevState.articles !== this.state.articles) {
             this.checkPageEnd()
         }
+        if (prevProps.topics !== this.props.topics) { this.setState({ availableTopics: this.props.topics }) }
     }
     checkPageEnd = () => {
         const { page, limit, articleCount } = this.state
@@ -93,12 +92,6 @@ class Articles extends Component {
         this.setState({ postingTopic: false })
     }
 
-    getTopics = () => {
-
-        Axios.get(`https://southcoders-news.herokuapp.com/api/topics`).then(({ data }) => {
-            this.setState({ availableTopics: data.topics })
-        })
-    }
     setCurrentTopic = () => {
         this.setState({ currentTopic: this.props.topic })
     }

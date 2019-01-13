@@ -9,46 +9,50 @@ import NewArticle from './components/NewArticle/NewArticle';
 import Users from './components/Users';
 import SingleUser from './components/SingleUser';
 import FourOhFour from './FourOhFour';
+import Axios from 'axios'
 
 
 
 class App extends Component {
   state = {
-    user : {}
+    user: {},
+    topics: []
   }
   render() {
+    const { user, topics } = this.state
     return (
       <div id='Home'>
-      <Auth login={this.login} user={this.state.user}>
-      <Header user={this.state.user} handleLogOut={this.handleLogOut} />
-      <Router className='Router'>
-      <Articles path='/'/>
-      <Articles path='/topics/:topic'/>
-      <ViewArticle user={this.state.user} path='/articles/:articleId'/>
-      <NewArticle user={this.state.user} path='/articles/post'/>
-      <Users path='/users'/>
-      <SingleUser path='/users/:username' />
-      <FourOhFour default to='/404'/>
-      </Router>
-      </Auth>
+        <Auth login={this.login} user={user}>
+          <Header user={user} handleLogOut={this.handleLogOut} />
+          <Router className='Router'>
+            <Articles topics={topics} path='/' />
+            <Articles path='/topics/:topic' />
+            <ViewArticle user={user} path='/articles/:articleId' />
+            <NewArticle topics={topics} user={user} path='/articles/post' />
+            <Users path='/users' />
+            <SingleUser path='/users/:username' />
+            <FourOhFour default to='/404' />
+          </Router>
+        </Auth>
       </div>
     );
   }
-  // && !this.state.user && !this.state.user.username
-  componentDidMount(){
-    if (localStorage.getItem('user')){this.setState({user: JSON.parse(localStorage.getItem('user'))})}
+  componentDidMount() {
+    if (localStorage.getItem('user')) { this.setState({ user: JSON.parse(localStorage.getItem('user')) }) }
+    this.getTopics()
   }
   handleLogOut = () => {
-    console.log('logging out');
-    this.setState({user: {}}, ()=>{
+    this.setState({ user: {} }, () => {
       localStorage.removeItem('user');
     })
-
   }
-
-  login = ({user}) => {
-    console.log('logging in', user)
-    this.setState({user})
+  getTopics = () => {
+    Axios.get(`https://southcoders-news.herokuapp.com/api/topics`).then(({ data }) => {
+      this.setState({ topics: data.topics }, () => { console.log(this.state) })
+    })
+  }
+  login = ({ user }) => {
+    this.setState({ user })
     localStorage.setItem('user', JSON.stringify(user))
   }
 }

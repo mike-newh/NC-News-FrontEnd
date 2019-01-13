@@ -14,8 +14,8 @@ class Comments extends Component {
         addedComments: []
     }
     render() {
-        const { user } = this.props
-        const { addedComments, comments } = this.state
+        const { user, articleId, commentCount, openAddComment } = this.props
+        const { addedComments, comments, beenDeleted, toBeDeleted } = this.state
         const allComments = addedComments.concat(comments)
         return (
             <div id='commentContainer'>
@@ -27,19 +27,19 @@ class Comments extends Component {
                                 <div className='textAndVote'>
                                     <li className='commentEntry' key={comment.comment_id}>{comment.body}</li>
 
-                                    <Votes key={`votes${comment.comment_id}`} articleId={this.props.articleId} commentId={comment.comment_id} votes={comment.votes} />
+                                    <Votes key={`votes${comment.comment_id}`} articleId={articleId} commentId={comment.comment_id} votes={comment.votes} />
                                 </div>
                                 <div className='btnAndInfo'>
 
                                     <span>By {comment.author}</span><span>{comment.created_at.slice(0, 10)}</span>
-                                    {user.username === comment.author && comment.comment_id !== 'psuedo' ? comment.comment_id === this.state.toBeDeleted ? <button onClick={() => { this.confirmDel(comment.comment_id) }}><i style={{ color: 'green' }} className="fas fa-check"></i></button> : <button onClick={() => { this.handleClick(comment.comment_id) }}><i className="far fa-trash-alt"></i></button> : <></>}</div>
+                                    {user.username === comment.author && comment.comment_id !== 'psuedo' ? comment.comment_id === toBeDeleted ? <button onClick={() => { this.confirmDel(comment.comment_id) }}><span>Confirm</span></button> : <button onClick={() => { this.handleClick(comment.comment_id) }}><i className="far fa-trash-alt"></i></button> : <></>}</div>
                             </div></Fragment>)
                     })}
-                    {this.state.comments && this.props.commentCount > this.state.comments.length + this.state.beenDeleted && <li id='loadMore'><button onClick={this.getMoreComments}>More Comments  <i className="far fa-comments"></i></button></li>}
+                    {comments && commentCount > comments.length + beenDeleted && <li id='loadMore'><button onClick={this.getMoreComments}>More Comments  <i className="far fa-comments"></i></button></li>}
                 </ul>
 
                 <CommentQuery handleQuery={this.handleQuery} />
-                <button onClick={this.props.openAddComment} id='addComment'>Add Comment</button>
+                <button onClick={openAddComment} id='addComment'>Add Comment</button>
             </div>
         );
     }
@@ -58,12 +58,12 @@ class Comments extends Component {
 
 
     getComments = () => {
-        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: data.comments, page: 1 }) })
+        Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}`).then(({ data }) => { this.setState({ comments: data.comments, page: 1 }) }).catch(() => { })
     }
     getMoreComments = () => {
         this.setState({ page: this.state.page + 1 }, () => {
             Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}&p=${this.state.page}`).then(({ data }) => {
-                this.setState({ comments: this.state.comments.concat(data.comments) }, () => { console.log(this.state) })
+                this.setState({ comments: this.state.comments.concat(data.comments) })
             })
             //psuedo comments will also apper alongside their real counterparts
         })

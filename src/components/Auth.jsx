@@ -10,9 +10,10 @@ class Auth extends Component {
     }
     render() {
         const { noInput, badCreds } = this.state
+        const { user, children } = this.props
         return (
-            this.props.user && this.props.user.username ?
-                this.props.children :
+            user && user.username ?
+                children :
                 <div id='AuthWrap'>
                     <form id='AuthForm'>
                         <label htmlFor='userid'>Username</label>

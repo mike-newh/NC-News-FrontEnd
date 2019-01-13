@@ -70,7 +70,10 @@ select {
 }
 
 .btnAndInfo button {
-  margin-left: 50px;
+  margin-left: 30px;
+}
+.btnAndInfo span {
+    margin: 0px 3px;
 }
 
 #loadMore {
