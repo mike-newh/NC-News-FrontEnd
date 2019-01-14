@@ -41,3 +41,13 @@
     right: 3px;
     max-height: 30px;
 }
+
+@media all and (max-width: 800px) {
+    #description {
+        width: 92%;
+    }
+    #NewTopic {
+        width: 80vw;
+        left: 10vw;
+    }
+}

@@ -48,3 +48,9 @@
 .vtUp {
     color: red;
 }
+
+@media all and (max-width: 500px) {
+    .voteCount span {
+        display: none;
+    }
+}

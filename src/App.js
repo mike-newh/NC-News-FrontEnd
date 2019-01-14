@@ -19,6 +19,7 @@ class App extends Component {
     topics: []
   }
   render() {
+  
     const { user, topics } = this.state
     return (
       <div id='Home'>
@@ -26,7 +27,7 @@ class App extends Component {
           <Header user={user} handleLogOut={this.handleLogOut} />
           <Router className='Router'>
             <Articles topics={topics} path='/' />
-            <Articles path='/topics/:topic' />
+            <Articles topics={topics} path='/topics/:topic' />
             <ViewArticle user={user} path='/articles/:articleId' />
             <NewArticle topics={topics} user={user} path='/articles/post' />
             <Users path='/users' />
@@ -48,7 +49,7 @@ class App extends Component {
   }
   getTopics = () => {
     Axios.get(`https://southcoders-news.herokuapp.com/api/topics`).then(({ data }) => {
-      this.setState({ topics: data.topics }, () => { console.log(this.state) })
+      this.setState({ topics: data.topics })
     })
   }
   login = ({ user }) => {

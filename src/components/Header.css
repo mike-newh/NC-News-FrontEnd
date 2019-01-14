@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 150px;
+    width: 12vw;
     height: 70%;
     position: relative;
     top: 10%;
@@ -65,4 +65,34 @@
 
 #userDetail p {
     margin: 5px;
+}
+
+@media all and (max-width: 500px) {
+    #Header .link {
+        font-size: 13px;
+        width: 10vw;
+    }
+    #userBox {
+        font-size: 10px;
+        width: 25vw;
+    }
+    #userDetail p {
+        margin: 0px;
+    }
+}
+
+@media all and (max-width: 375px) {
+    #Header .link {
+        font-size: 12px;
+    }
+    #Header .link {
+        width: 12vw;
+    }
+    #userBox {
+        font-size: 10px;
+        width: 25vw;
+    }
+    #loggedInAs {
+        display: none;
+    }
 }

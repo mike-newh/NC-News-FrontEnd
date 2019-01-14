@@ -75,3 +75,14 @@
 .visitArticle {
     text-decoration: none;
 }
+
+@media all and (max-width: 1000px) {
+    #NewArticle textarea {
+        max-width: 90%;
+    }
+    #NewArticle form button {
+        height: auto;
+        width: auto;
+        min-height: 20px;
+    }
+}

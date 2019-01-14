@@ -8,8 +8,26 @@
     border-radius: 3px;
     box-shadow: 1px 1px 5px 1px grey;
 
+}
+@media all and (max-width: 800px) {
+    #commentContainer {
+        min-width: 100vw;
+        height: auto;
+        top: 0px;
+    }
+    #Comments {
+        height: auto;
+    }
+
 
 }
+@media all and (max-width: 1000px) {
+    .voteCount span {
+        display: none;
+    }
+}
+
+
 
 #commentContainer {
     max-width: 25%;

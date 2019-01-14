@@ -10,7 +10,6 @@
     padding-top: 5px;
     margin-bottom: 5px;
     font-family: 'Slabo 27px';
-    
 }
 .ArticleItem:hover {
     box-shadow: 0px 0px 1px 1px grey;
@@ -66,4 +65,13 @@ h4 {
 
 #noArticlesBtn {
     margin-bottom: 5vh;
+}
+
+@media all and (max-width: 500px) {
+    .ArticleItem span {
+        font-size: 12px;
+    }
+    .titleLink {
+        width: 75%;
+    }
 }

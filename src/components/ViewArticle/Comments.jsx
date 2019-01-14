@@ -19,8 +19,11 @@ class Comments extends Component {
         const allComments = addedComments.concat(comments)
         return (
             <div id='commentContainer'>
+                            <CommentQuery className='nonMobile' handleQuery={this.handleQuery} />
+                <button className='nonMobile' onClick={openAddComment} id='addComment'>Add Comment</button>
+            
                 <ul id='Comments'>
-
+               
                     {allComments.map((comment) => {
                         return (<Fragment key={comment.comment_id + 'frag'}>
                             <div className='MasterComment'>
@@ -38,8 +41,7 @@ class Comments extends Component {
                     {comments && commentCount > comments.length + beenDeleted && <li id='loadMore'><button onClick={this.getMoreComments}>More Comments  <i className="far fa-comments"></i></button></li>}
                 </ul>
 
-                <CommentQuery handleQuery={this.handleQuery} />
-                <button onClick={openAddComment} id='addComment'>Add Comment</button>
+
             </div>
         );
     }

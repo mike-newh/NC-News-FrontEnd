@@ -1,5 +1,4 @@
 #ArticleText {
-    height:100%;
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -9,13 +8,15 @@
 #articleDelete {
     position: inline-block;
     margin-left: 5px;
-    max-height: 20px;
+    max-height: 22px;
     max-width: 100px;
+    min-height: 22px;
 }
 
 #ArticleText h1 {
     margin-bottom: 5px;
     font-family: 'Slabo 27px';
+
 }
 
 #ArticleText h2 {
@@ -24,4 +25,12 @@
 
 #ArticleText p {
     margin: 3vh 10%;
+}
+
+@media all and (max-width: 800px) {
+    #ArticleText {
+        width: 99%;
+        min-height: 60vh;
+        overflow: auto;
+    }
 }

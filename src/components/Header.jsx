@@ -14,9 +14,9 @@ const Header = (props) => {
             <Link className='link' to='/users'><p>Users</p></Link>
             <div id='userBox'>
             <div id='userDetail'>
-            <p>Logged in as:</p><p>{user.username}</p></div><img alt='user Avatar' id='avatar' src={user.avatar_url}></img>
+            <p id='loggedInAs'>Logged in as:</p><p>{user.username}</p></div><img alt='user Avatar' id='avatar' src={user.avatar_url}></img>
             </div>
-            <Link className='link' style={{width: '75px'}} to='/' onClick={handleLogOut}>Log Out</Link>
+            <Link className='link' to='/' onClick={handleLogOut}>Log Out</Link>
         </div>
     );
 };

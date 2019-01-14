@@ -17,7 +17,6 @@
 }
 
 #List {
-    background-color: orange;
     width: 80%;
 }
 
@@ -27,7 +26,7 @@
 
 
 #Queries {
-    min-height: 8vh;
+    min-height: 12vh;
     background-color: white;
     border: 2px solid var(--prim);
     border-radius: 2px;
@@ -120,4 +119,39 @@
     min-height: 20px;
     margin-left: 10px;
 
+}
+
+@media all and (max-width: 650px) {
+    #queryForm {
+        flex-wrap: wrap;
+    }
+    #Queries {
+        min-height: 15vh;
+        font-size: 12px;
+        padding: 5px;
+    }
+    #QueryAndList {
+        max-width: 90%;
+    }
+    .pgBtn {
+        font-size: 10px;
+        margin-right: 0.5vw;
+        width: 60px;
+    }
+    #Articles h4 {
+        font-size: 15px;
+    }
+    #radioWrap {
+        margin-top: 5px;
+    }
+
+}
+
+@media all and (max-width: 375px) {
+    #Queries {
+        min-height: 15vh;
+        font-size: 12px;
+        padding: 5px;
+        padding-bottom: 3vh;
+    }
 }

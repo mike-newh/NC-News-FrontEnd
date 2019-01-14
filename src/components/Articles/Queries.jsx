@@ -20,9 +20,9 @@ function Queries(props) {
                     <option value='comment_count'>Comment Count</option>
                     <option value='title'>Title</option>
                     <option value='created_at'>Date</option>
-                </select>
-                <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={true} />Ascending<br /></div>
-                <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={false} defaultChecked />Descending<br /></div>
+                </select><div id='radioWrap'>
+                <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={true} />Ascending</div>
+                <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={false} defaultChecked />Descending</div></div>
                 <button type='submit'>Filter</button>
             </form>
             {pageEnd ?
