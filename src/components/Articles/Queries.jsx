@@ -6,7 +6,7 @@ function Queries(props) {
     return (
         <div id='Queries'>
             {pageNum > 1 ? <button className='pgBtn' onClick={() => { handlePage(-1) }} disabled={pageNum === 1}><i className="fas fa-chevron-circle-left"></i>Prev Page</button> : <div id='prevPlacehold'></div>}
-            <form id='queryForm' onSubmit={handleFilter}>
+            <form id='queryForm'>
                 <label htmlFor='limit'>Results per page:</label>
                 <select onChange={handleLimit} id='limit'>
                     <option>10</option>
@@ -23,7 +23,6 @@ function Queries(props) {
                 </select><div id='radioWrap'>
                 <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={true} />Ascending</div>
                 <div><input onClick={handleSortAsc} type='radio' name='sortAsc' value={false} defaultChecked />Descending</div></div>
-                <button type='submit'>Filter</button>
             </form>
             {pageEnd ?
                 <button className='pgBtn' onClick={() => { handlePage(1) }}>Next Page<i className="fas fa-chevron-circle-right"></i></button> : <div id='prevPlacehold'></div>}

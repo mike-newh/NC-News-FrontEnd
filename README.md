@@ -1,9 +1,9 @@
-#Northcoders News
+#Southcoders News
 
-Northcoders News is an article aggregation site created as a project during the Northcoders coding bootcamp. Users are able to post text articles and comments, as well as score other user submissions with votes. The project frontend was created with ReactJS
+Southcoders News is an article aggregation site created as a project during the Northcoders coding bootcamp. Users are able to post text articles and comments, as well as score other user submissions with votes. The project frontend was created with ReactJS
 
 A live version of this project frontend is available at 
-> URL
+> https://southcodersnews.netlify.com
 
 
 

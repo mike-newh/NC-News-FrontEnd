@@ -6,12 +6,12 @@ import CommentQuery from './CommentQuery';
 
 class Comments extends Component {
     state = {
-        comments: this.props.psuedos,
+        comments: [],
         toBeDeleted: NaN,
         queryString: '?sort_by=votes&sort_ascending=false',
         page: 1,
         beenDeleted: 0,
-        addedComments: []
+        addedComments: this.props.newComments
     }
     render() {
         const { user, articleId, commentCount, openAddComment } = this.props
@@ -34,8 +34,8 @@ class Comments extends Component {
                                 </div>
                                 <div className='btnAndInfo'>
 
-                                    <span>By {comment.author}</span><span>{comment.created_at.slice(0, 10)}</span>
-                                    {user.username === comment.author && comment.comment_id !== 'psuedo' ? comment.comment_id === toBeDeleted ? <button onClick={() => { this.confirmDel(comment.comment_id) }}><span>Confirm</span></button> : <button onClick={() => { this.handleClick(comment.comment_id) }}><i className="far fa-trash-alt"></i></button> : <></>}</div>
+                                    <span>By {comment.author ? comment.author : user.username}</span><span>{comment.created_at.slice(0, 10)}</span>
+                                    {(user.username === comment.author) && comment.comment_id !== 'newComment' ? comment.comment_id === toBeDeleted ? <button onClick={() => { this.confirmDel(comment.comment_id) }}><span>Confirm</span></button> : <button onClick={() => { this.handleClick(comment.comment_id) }}><i className="far fa-trash-alt"></i></button> : <></>}</div>
                             </div></Fragment>)
                     })}
                     {comments && commentCount > comments.length + beenDeleted && <li id='loadMore'><button onClick={this.getMoreComments}>More Comments  <i className="far fa-comments"></i></button></li>}
@@ -52,8 +52,8 @@ class Comments extends Component {
 
     }
     componentDidUpdate(prevProps) {
-        if (prevProps.psuedos !== this.props.psuedos && this.props.psuedos.length > 0) {
-            this.setState({ addedComments: this.props.psuedos })
+        if (prevProps.newComments !== this.props.newComments && this.props.newComments.length > 0) {
+            this.setState({ addedComments: this.props.newComments })
         }
     }
 
@@ -67,7 +67,7 @@ class Comments extends Component {
             Axios.get(`https://southcoders-news.herokuapp.com/api/articles/${this.props.articleId}/comments/${this.state.queryString}&p=${this.state.page}`).then(({ data }) => {
                 this.setState({ comments: this.state.comments.concat(data.comments) })
             })
-            //psuedo comments will also apper alongside their real counterparts
+            //newComment comments will also apper alongside their real counterparts
         })
 
     }

@@ -39,7 +39,7 @@ class NewTopic extends Component {
         else {
             const newTopic = { slug, description }
             this.setState({ reqSent: true, error422: false })
-            Axios.post('https://southcoders-news.herokuapp.com/api/topics', newTopic).then((res) => { this.setState({ resRecieved: true, error: false, error422: false, reqSent: false }) }).catch((res) => {
+            Axios.post('https://southcoders-news.herokuapp.com/api/topics', newTopic).then((res) => { this.setState({ resRecieved: true, error: false, error422: false, reqSent: false }, ()=>{setTimeout(()=>{this.props.handleClose()}, 2000)})}).catch((res) => {
                 if (res.response.status === 422)
                     this.setState({ error422: true, reqSent: false })
             })

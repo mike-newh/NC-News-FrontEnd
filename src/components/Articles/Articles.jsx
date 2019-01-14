@@ -42,16 +42,15 @@ class Articles extends Component {
     }
 
     handleLimit = (e) => {
-        this.setState({ limit: e.target.value })
+        this.setState({ limit: e.target.value, page: 1 }, ()=>{this.handleFilter()})
     }
     handleSortBy = (e) => {
-        this.setState({ sort_by: e.target.value })
+        this.setState({ sort_by: e.target.value }, ()=>{this.handleFilter()})
     }
     handleSortAsc = (e) => {
-        this.setState({ sort_ascending: e.target.value })
+        this.setState({ sort_ascending: e.target.value }, ()=>{this.handleFilter()})
     }
     handleFilter = (e) => {
-        e.preventDefault()
         this.getArticles()
     }
     handlePage = (int) => {
